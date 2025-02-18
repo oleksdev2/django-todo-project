@@ -3,3 +3,5 @@
 ## new head
 
 Hello word
+
+adminka: admin/admin
