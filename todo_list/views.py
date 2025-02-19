@@ -35,7 +35,7 @@ class ToDoListIndexView(TemplateView):
 """
 class ToDoListIndexView(ListView):
     template_name = 'todo_list/index.html'
-    model = ToDoItem
+    queryset = ToDoItem.objects.all()[:3]
 
 
 
