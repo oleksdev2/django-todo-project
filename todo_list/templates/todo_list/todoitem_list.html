@@ -9,8 +9,9 @@
 
 {% block body %}
   <h3>ToDos:</h3>
+  {% comment %} вместо <ul> подключаем todo_items_list.html
   <ul>
-    {# {% for todo_item in todo_items %}  #}  {% comment %} комментарий многострочный {% endcomment %}
+    {# {% for todo_item in todo_items %}  #}  
     {% for todo_item in object_list %}   
     	<li>
         {{ todo_item.title }}
@@ -20,7 +21,8 @@
           ❌
         {% endif %}
       </li>
-    {% endfor %}
-    
+    {% endfor %}    
   </ul>
+  {% endcomment %}
+  {% include  'todo_list/components/todo_items_list.html'%}
 {% endblock %}

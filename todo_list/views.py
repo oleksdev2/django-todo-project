@@ -23,6 +23,8 @@ def index_view(request: HttpRequest) -> HttpResponse:
                   context={'todo_items':todo_items}
                   )
 
+
+"""
 class ToDoListIndexView(TemplateView):
     template_name = 'todo_list/index.html'
 
@@ -30,6 +32,13 @@ class ToDoListIndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['todo_items'] = ToDoItem.objects.all()
         return context
+"""
+class ToDoListIndexView(ListView):
+    template_name = 'todo_list/index.html'
+    model = ToDoItem
+
+
+
 
 """  класс до создания шаблона todoitem_list.html
  get_context_data здесь только для вывода print, чтобы показать значения
