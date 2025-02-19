@@ -31,6 +31,8 @@ class ToDoListIndexView(TemplateView):
         context['todo_items'] = ToDoItem.objects.all()
         return context
 
+"""  класс до создания шаблона todoitem_list.html
+ get_context_data здесь только для вывода print, чтобы показать значения
 
 class ToDoListView(ListView):
     template_name = 'todo_list/index.html'
@@ -43,4 +45,6 @@ class ToDoListView(ListView):
         print(ToDoItem._meta.app_label)  # выведет todo_list
         print(ToDoItem._meta.model_name) # выведет todoitem
         return super().get_context_data(**kwargs)
-
+"""
+class ToDoListView(ListView):
+    model = ToDoItem
