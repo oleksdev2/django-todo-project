@@ -57,3 +57,7 @@ class ToDoListView(ListView):
 """
 class ToDoListView(ListView):
     model = ToDoItem
+
+
+class ToDoListDoneView(ListView):
+    queryset = ToDoItem.objects.filter(done=True).all()

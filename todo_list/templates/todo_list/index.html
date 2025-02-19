@@ -6,7 +6,10 @@
 
 {% block body %}
 	<h1>ToDo список App</h1>
-      <div><a href="{% url 'todo_list:list' %}">Все todo элементы</a></div>
+      <ul>
+        <li><a href="{% url 'todo_list:list' %}">Все todo элементы</a></li>
+        <li><a href="{% url 'todo_list:done' %}">Все выполненные todo</a></li>
+      </ul>
   <h2>ToDos:</h2>
    {% comment %} вместо <ul> подключаем todo_items_list.html
   <ul>
