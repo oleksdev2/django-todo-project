@@ -3,6 +3,7 @@ from django.db import models
 class ToDoItem(models.Model):
 
     class Meta:
+        ordering = ('-id',)
         verbose_name = "Элемент ToDo"
         verbose_name_plural = "Элементы ToDo"
 

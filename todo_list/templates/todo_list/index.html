@@ -1,0 +1,24 @@
+{% extends 'todo_list/base.html' %}
+
+{% block title %}
+	ToDo список App
+{% endblock %}
+
+{% block body %}
+	<h1>ToDo список App</h1>
+  <h2>ToDos:</h2>
+  <ul>
+    {# {% for todo_item in todo_items %}  #}  {% comment %} комментарий многострочный {% endcomment %}
+    {% for todo_item in object_list %}   
+    	<li>
+        {{ todo_item.title }}
+        {% if todo_item.done %}
+          ✅
+        {% else %}
+          ❌
+        {% endif %}
+      </li>
+    {% endfor %}
+    
+  </ul>
+{% endblock %}
