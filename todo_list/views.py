@@ -8,9 +8,13 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
+    UpdateView,
 )
 
-from .forms import ToDoItemCreateForm
+from .forms import (
+    ToDoItemCreateForm,
+    ToDoItemUpdateForm,
+)
 from .models import ToDoItem
 
 def index_view(request: HttpRequest) -> HttpResponse:
@@ -77,3 +81,9 @@ class ToDoItemCreateView(CreateView):
     form_class = ToDoItemCreateForm
     #fields = ('title', 'description',)
 
+
+
+class ToDoItemUpdateView(UpdateView):
+    model = ToDoItem
+    template_name_suffix = '_update_form'
+    form_class = ToDoItemUpdateForm   # мы можем вместо этого присвоения добавить fields = ( 'title', ......) но тогда не будут применяться переопределения

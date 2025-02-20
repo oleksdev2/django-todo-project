@@ -12,6 +12,7 @@ urlpatterns = [
     #path('', views.ToDoListIndexView.as_view(), name='index'),
     path('', views.ToDoListIndexView.as_view(), name='index'),
     path('<int:pk>/', views.ToDoDetailView.as_view(), name='detail'),
+    path('<int:pk>/update/', views.ToDoItemUpdateView.as_view(), name='update'),
     path('list/', views.ToDoListView.as_view(), name='list'),
     path('done/', views.ToDoListDoneView.as_view(), name='done'),
     path('create/', views.ToDoItemCreateView.as_view(), name='create'),

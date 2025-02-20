@@ -11,4 +11,8 @@
     <div>Done: <strong>{{ object.done }}</strong></div>
     <div>Description: <strong>{{ object.description }}</strong></div>  
   </div>
+  
+  <div>
+    <a href="{% url 'todo_list:update' pk=object.pk %}">Редактировать элемент ToDo</a>
+  </div>
 {% endblock %}

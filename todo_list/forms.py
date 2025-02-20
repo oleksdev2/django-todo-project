@@ -18,3 +18,12 @@ class ToDoItemCreateForm(forms.ModelForm):
         help_texts = {
             'description': 'Это поле для ввода текста описания.',
         }
+
+
+class ToDoItemUpdateForm(forms.ModelForm):
+    class Meta(ToDoItemCreateForm.Meta):
+        fields = (
+            'title',
+            'description',
+            'done',
+        )
