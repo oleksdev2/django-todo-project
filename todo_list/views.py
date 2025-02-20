@@ -3,6 +3,7 @@ from django.http import (
     HttpResponse,
 )
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import (
     TemplateView,
     ListView,
@@ -75,3 +76,10 @@ class ToDoDetailView(DetailView):
 class ToDoItemCreateView(CreateView):
     model = ToDoItem
     form_class = ToDoItemForm
+
+    # 1ый способ: добавляем ссылку перехода после нажатия на Add на форме создания todo
+    def get_success_url(self):
+        return reverse(
+            viewname='todo_list:detail',
+            kwargs={'pk': self.object.pk},
+        )
