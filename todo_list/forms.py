@@ -15,4 +15,6 @@ class ToDoItemForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(attrs={'cols': 30, 'rows': 5}),
         }
-
+        help_texts = {
+            'description': 'Это поле для ввода текста описания.',
+        }
