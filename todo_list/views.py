@@ -3,12 +3,14 @@ from django.http import (
     HttpResponse,
 )
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import (
     TemplateView,
     ListView,
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 
 from .forms import (
@@ -87,3 +89,11 @@ class ToDoItemUpdateView(UpdateView):
     model = ToDoItem
     template_name_suffix = '_update_form'
     form_class = ToDoItemUpdateForm   # мы можем вместо этого присвоения добавить fields = ( 'title', ......) но тогда не будут применяться переопределения
+
+
+class ToDoItemDeleteView(DeleteView):
+    model = ToDoItem
+    success_url = reverse_lazy('todo_list:list') # чтобы в момент обращения было выполнено вычисление на какой адрес перенаправлять
+    # какой нам шаблон нужен, если мы не указали: ctrl+клик на DeleteView
+    # и смотрим значение template_name_suffix = "_confirm_delete" -- нам нужна страничка для подтверждения удаления
+    # и в urls.py запишем '<int:pk>/confirm-delete/'

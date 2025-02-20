@@ -1,0 +1,22 @@
+{% extends 'todo_list/base.html' %}
+
+{% block title %}
+	Подтвердить Удаление элемента ToDo № {{ object.id }}
+{% endblock %}
+
+{% block body %}
+  <h2>Подтверждение удаления "{{ object.title }}"</h2>
+  <p>
+    Are you sure you want to delete ToDo Item 
+    (Вы точно хотите удалить) "<code>{{ object.title }}</code>"
+    with description (с описанием): <i>{{ object.description }}</i>
+  </p>
+  <form method="post">{% csrf_token %}
+    {{ form }} 
+    <button type="submit"> Удалить</button>
+  </form>
+  
+  <div>
+     <a href="{% url 'todo_list:detail' object.pk %}">Вернуться к просмотру элемента ToDo</a>
+  </div>
+{% endblock %}
