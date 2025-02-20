@@ -4,8 +4,15 @@ from todo_list.models import ToDoItem
 
 
 class ToDoItemForm(forms.ModelForm):
-    title = forms.CharField(max_length=250)
+    #title = forms.CharField(max_length=250) # в таком виде он тут лишний,
+    #  а вот если хотим переопределить поле:
+    #title = forms.CharField(max_length=250, widget=forms.Textarea())
+    #  само правильно через виджет в классе Meta:
 
     class Meta:
         model =ToDoItem
         fields = ('title',)
+        widgets = {
+            'title': forms.Textarea(attrs={'cols': 30, 'rows': 5}),
+        }
+
