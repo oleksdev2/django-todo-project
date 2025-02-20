@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.views.generic import (
     TemplateView,
     ListView,
+    DetailView,
 )
 
 from .models import ToDoItem
@@ -61,3 +62,8 @@ class ToDoListView(ListView):
 
 class ToDoListDoneView(ListView):
     queryset = ToDoItem.objects.filter(done=True).all()
+
+
+
+class ToDoDetailView(DetailView):
+    model = ToDoItem
