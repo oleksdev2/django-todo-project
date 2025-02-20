@@ -10,7 +10,7 @@ from django.views.generic import (
     CreateView,
 )
 
-from .forms import ToDoItemForm
+from .forms import ToDoItemCreateForm
 from .models import ToDoItem
 
 def index_view(request: HttpRequest) -> HttpResponse:
@@ -74,6 +74,6 @@ class ToDoDetailView(DetailView):
 
 class ToDoItemCreateView(CreateView):
     model = ToDoItem
-    form_class = ToDoItemForm
+    form_class = ToDoItemCreateForm
     #fields = ('title', 'description',)
 

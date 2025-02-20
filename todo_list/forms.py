@@ -3,7 +3,7 @@ from django import  forms
 from todo_list.models import ToDoItem
 
 
-class ToDoItemForm(forms.ModelForm):
+class ToDoItemCreateForm(forms.ModelForm):
     #title = forms.CharField(max_length=250) # в таком виде он тут лишний,
     #  а вот если хотим переопределить поле:
     #title = forms.CharField(max_length=250, widget=forms.Textarea())
