@@ -7,8 +7,10 @@ from django.views.generic import (
     TemplateView,
     ListView,
     DetailView,
+    CreateView,
 )
 
+from .forms import ToDoItemForm
 from .models import ToDoItem
 
 def index_view(request: HttpRequest) -> HttpResponse:
@@ -67,3 +69,9 @@ class ToDoListDoneView(ListView):
 
 class ToDoDetailView(DetailView):
     model = ToDoItem
+
+
+
+class ToDoItemCreateView(CreateView):
+    model = ToDoItem
+    form_class = ToDoItemForm
