@@ -12,6 +12,7 @@ class ToDoItem(models.Model):
     title = models.CharField(max_length=250)
     description = models.TextField(blank=True, null=False) # пустое значение можно, но отсутствие - нельзя
     done = models.BooleanField(default=False)
+    archived = models.BooleanField(default=False)
 
     # 2ый более правильный способ: добавляем ссылку перехода после нажатия на Add на форме создания todo
     def get_absolute_url(self):

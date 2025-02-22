@@ -44,6 +44,7 @@ class ToDoListIndexView(TemplateView):
 """
 class ToDoListIndexView(ListView):
     template_name = 'todo_list/index.html'
+    # TODO: custom qs, archived   здесь напоминалка о том, что мы в этом списке ограничим список по значению archived, когда будем изучать кастомные квэрисеты и заменим на более лучшие помошники, чем фильтр ToDoItem.objects.filter(archived=False)
     queryset = ToDoItem.objects.all()[:3]
 
 
@@ -65,16 +66,19 @@ class ToDoListView(ListView):
         return super().get_context_data(**kwargs)
 """
 class ToDoListView(ListView):
-    model = ToDoItem
-
+    #model = ToDoItem
+    queryset = ToDoItem.objects.filter(archived=False)  # исключаем из списка архивные (помеченные на удаление) записи
 
 class ToDoListDoneView(ListView):
+    # TODO: archived qs,
     queryset = ToDoItem.objects.filter(done=True).all()
 
 
 
 class ToDoDetailView(DetailView):
-    model = ToDoItem
+    #model = ToDoItem
+    # TODO: archived qs
+    queryset = ToDoItem.objects.filter(done=True)
 
 
 
