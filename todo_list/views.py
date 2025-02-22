@@ -1,6 +1,6 @@
 from django.http import (
     HttpRequest,
-    HttpResponse,
+    HttpResponse, HttpResponseRedirect,
 )
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -78,7 +78,7 @@ class ToDoListDoneView(ListView):
 class ToDoDetailView(DetailView):
     #model = ToDoItem
     # TODO: archived qs
-    queryset = ToDoItem.objects.filter(done=True)
+    queryset = ToDoItem.objects.filter(archived=False)
 
 
 
@@ -101,3 +101,12 @@ class ToDoItemDeleteView(DeleteView):
     # какой нам шаблон нужен, если мы не указали: ctrl+клик на DeleteView
     # и смотрим значение template_name_suffix = "_confirm_delete" -- нам нужна страничка для подтверждения удаления
     # и в urls.py запишем '<int:pk>/confirm-delete/'
+
+    # При удалении мы хотим помечать объект как удаленный вместо полного удаления
+    # Поменяем поведение, когда джанго получает успешно обработанную форму
+    # Для этого нужно переопределить метод form_valid(): архивировать, а не удалять объект
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        self.object.archived = True
+        self.object.save()
+        return HttpResponseRedirect(success_url)
